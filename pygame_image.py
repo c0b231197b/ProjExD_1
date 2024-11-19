@@ -19,18 +19,20 @@ def main():
     kk_rct.center = 300,200
     v = 1
     while True:
+        vx = 0
+        vy = 0
         for event in pg.event.get():
             if event.type == pg.QUIT: return
         key_lst = pg.key.get_pressed()
         if key_lst[pg.K_UP]:
-            kk_rct.move_ip((0, -(v)))
+            vy =  -1
         if key_lst[pg.K_DOWN]:
-            kk_rct.move_ip((0, (v)))
+            vy =  1
         if key_lst[pg.K_RIGHT]:
-            kk_rct.move_ip((2*v, 0))
+            vx = 2
         if key_lst[pg.K_LEFT]:
-            kk_rct.move_ip(((-v), 0))
-        kk_rct.move_ip(((-v),0))
+            vx = -1
+        kk_rct.move_ip(((-v+vx),vy))
         x = -(tmr%3200)
         screen.blit(bg_img, [x, 0])
         screen.blit(bg_img1, [(x+1600), 0])
